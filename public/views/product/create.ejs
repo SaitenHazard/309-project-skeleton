@@ -2,29 +2,95 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        input:valid{
+            border: 1px solid green;
+        }
+        input:invalid{
+            border: 1px solid red;
+        }
+    </style>
 </head>
-
-<h1>
-Create Product
-</h1>
 
 <body>
 
-<form action="/action_page.php">
-  Name:<br>
-  <input type="text" name="firstname" value="Mickey">
-  <br><br>
-  Discription:<br>
-  <input type="text" name="lastname" value="Mouse">
-  <br><br>
-  Price:<br>
-  <input type="text" name="lastname" value="Mouse">
-  <br><br>
-  Quantity:<br>
-  <input type="text" name="lastname" value="Mouse">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+  <div class = "container">
+  <h1>Create New Product</h1>
+  <br>
 
+  <form id="createProductForm" class = "form-horizontal" onsubmit="return false;">
+      
+      <div class ="form-group">
+      
+      <label for ="name" class ="col-sm-2 control-label">Name</label>
+      <div class="col-sm-8">
+      <input type="text" class ="form-control" id ="name" placeholder="John Doe" required>
+      </div>
+      
+    </div>
+  <div class ="form-group">
+      
+      <label for ="description" class ="col-sm-2 control-label" >Description</label>
+      <div class="col-sm-8">
+      <textarea  class ="form-control" rows="3" id ="description"></textarea>
+      </div>
+      
+    </div>
+    
+  <div class ="form-group">
+      
+      <label for ="price" class ="col-sm-2 control-label" required>Price</label>
+      <div class="col-sm-8">
+      <input type="number" class ="form-control" id ="price" >
+      </div>
+      
+    </div>
+    <div class ="form-group">
+      
+      <label for ="quantity" class ="col-sm-2 control-label" required>Quantity</label>
+      <div class="col-sm-8">
+      <input type="number" class ="form-control" id ="quantity" >
+      </div>
+      
+    </div>
+    
+    <div class="form-group">
+        <div class = "col-sm-offset-2 col-sm-10">
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+   </form>
+   
+    <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+    
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js "></script>
+    <script>
+        var product = {
+            Name: "",
+            Description: "",
+            Price: null,
+            Quantity: null
+        };
+        
+        $("#submit").click(function(event){
+            if($("#createProductForm").valid()){
+                console.log("valid");
+                
+                product.Name = $("#name").val();
+                product.Description = $("#description").val();
+                product.Price = $("#price").val();
+                product.Quantity = $("#quantity").val();
+                console.log(product);
+                // $ajax({
+                //     url:"api/products",
+                //     method:"post",
+                //     data: product
+                // });
+            }else{
+                console.log("invalid input");
+            }
+        });
+    </script>
 </body>
 </html>
