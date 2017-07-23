@@ -9,7 +9,7 @@ var ProductSchema = {
     required: 'Name required'
   },
 
-  Discription: {
+  Description: {
     type: String,
     default: '',
     trim: true,
