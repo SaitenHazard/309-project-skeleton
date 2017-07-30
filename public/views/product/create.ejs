@@ -89,7 +89,7 @@
                      data: product
                 }).done(function(response){
                      console.log(response);
-                     
+                     window.location.replace("/product/"+response._id);
                 }).fail(function(response){
                      console.log(response.responseText);
                      $("#error").text(JSON.parse(response.responseText).message);
