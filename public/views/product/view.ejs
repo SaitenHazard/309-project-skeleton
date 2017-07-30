@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        input:valid{
+            border: 1px solid green;
+        }
+        input:invalid{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <title>Name: <%=request.product.Name%></title>
+    <h1>Single Product Info</h1>
+
+    <h2>Name: <%=request.product.Name%></h2>
+    <% if(request.product.description){ %>
+    <h2>Description: <%=request.product.Description%></h2>
+    <% } %>
+    <h2>Quantity: <%=request.product.Quantity%></h2>
+    <h2>Price: <%=request.product.Price%></h2>
+    <p id="date"></p>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        var product=<%- JSON.stringify(request.product)%>
+        console.log(product);
+        $("#date").text(product.created);
+    </script>
+
+</body>
+</html>

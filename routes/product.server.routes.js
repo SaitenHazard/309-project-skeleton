@@ -9,6 +9,12 @@ module.exports = function(app){
 	app.route('/product/new')
 	.get(products.new)
 	
+	app.route('/product/view')
+	.get(products.view)
+	
+	app.route('/product/:productId')
+	.get(products.view)
+	
 	app.route('/api/products')
 	.get(products.list)
 	.post(users.requiresLogin, products.create);
